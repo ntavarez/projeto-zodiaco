@@ -1,0 +1,139 @@
+body{
+    background-image: url(./img/bg/universe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 99%;
+    font-family: 'Tahoma';
+    color: whitesmoke;
+}
+.formulario{
+    width: 300px;
+    margin: 10.5% 36%;
+    padding: 10px 35px 35px 35px;
+    border: 1px solid whitesmoke;
+    display: block;
+    background-color: rgba(250, 250, 250, 0.1);
+}
+#form1, #form2 p{
+    width: 100%;
+    font-family: Tahoma;
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: whitesmoke;
+}
+#form2{
+    margin: 0% 36%;
+}
+.campo{
+    width: 100%;
+    margin: 15px 0;
+    padding: 1px;
+    color: whitesmoke;
+}
+.campo label{
+    font-family: Tahoma;
+    font-size: 15px;
+    padding-left: 10px;
+    display: block;
+    padding-bottom: 1px;
+}
+.campo-radiobox{
+    font-family: Tahoma;
+    line-height: 1.3;
+    width: 100%;
+    text-align: left;
+    display: block;
+    padding: 15px;
+    padding-left: 11px;
+    font-size: 15px;
+    color: whitesmoke;
+}
+input[type=text], input[type=date]{
+    width: 100%;
+    padding-left: 10px;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-family: 'Tahoma';
+}
+
+input[type=password]{
+    width: 100%;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-family: 'Tahoma';
+}
+
+input[type=submit]{
+    font-family: Tahoma;
+    display: block;
+    background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    width: 50%;
+    height: 30px;
+    margin: 0 25%;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.btn{
+    width: 100%;
+    font-family: Tahoma;
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    margin-left: 0 25%;
+    color: whitesmoke;
+    border: 1px;
+    font-weight: bold;
+    border-color: rgb(92, 92, 92);
+    padding-top: 10px;
+}
+
+.btn:visited{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(220, 220, 201);
+    border: 1px solid white;
+    border-radius: 10px;
+}
+footer{
+    font-size: 13px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: -1px -1px 0 rgba(32, 32, 32, 0.7),  
+    1px -1px 0 rgba(32, 32, 32, 0.7),
+    -1px 1px 0 rgba(32, 32, 32, 0.7),
+    1px 1px 0 rgba(32, 32, 32, 0.7);
+    margin-top: 20px; 
+}
+footer p{
+    padding: 5px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-align: right;
+}
+footer a{
+    color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 5px;
+    text-decoration: none;
+}
+footer a:hover{
+    color: whitesmoke;
+}
+footer a:visited{
+    color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}

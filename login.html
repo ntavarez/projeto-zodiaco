@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- doctype informa ao agente de usuario a versão do html que deve ser renderizada-->
+
+<html lang="pt-br">
+<head>
+    <title>~Cantinho dos Signos~</title>
+    <meta charset="utf-8">
+    <meta name="author" content="https://github.com/ntavarez">
+    <meta name="keywords" content="astrologia, signos, misticismo">
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- Login POST -->
+    <div class="formulario">
+        <form id="form1" method="post" action="login.php">
+            <p>Bem-vindo(a)!</p>
+        
+            <div class="campo">
+                <label for="login">login:</label>
+                <input type="text" id="login" name="login" data-ls-module="charCounter" maxlength="20" required>
+            </div>
+
+            <div class="campo">
+                <label for="login">senha:</label>
+                <input type="password" id="senha" name="senha" data-ls-module="charCounter" maxlength="25" required>
+            </div>
+
+            <input type="submit" name="entrar" value="Entrar">
+            <a class="btn" href="cadastro.html">Criar conta</a>
+        </form>
+    </div>
+</body>
+<footer><p>Por <a href="https://github.com/ntavarez">Natália Tavares</a></p></footer>
+</html>

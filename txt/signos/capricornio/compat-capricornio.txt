@@ -1,0 +1,8 @@
+<ul>
+<li>Capricórnio</li>
+<li>Touro</li>
+<li>Virgem</li>
+<li>Peixes</li>
+<li>Câncer</li>
+<li>Escorpião</li>
+</ul>

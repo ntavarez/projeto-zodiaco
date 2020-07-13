@@ -1,0 +1,8 @@
+<ul>
+<li>Aquário</li>
+<li>Libra</li>
+<li>Gêmeos</li>
+<li>Áries</li>
+<li>Leão</li>
+<li>Sagitário</li>
+</ul>

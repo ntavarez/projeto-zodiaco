@@ -1,0 +1,94 @@
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    width: 100%;
+    font-family: 'Tahoma';
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 rgba(32, 32, 32, 0.7),  
+    1px -1px 0 rgba(32, 32, 32, 0.7),
+    -1px 1px 0 rgba(32, 32, 32, 0.7),
+    1px 1px 0 rgba(32, 32, 32, 0.7);
+}
+.topo nav li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 10px;
+}
+.topo nav ul{
+    text-align: right;
+    margin: 20px 36px 0px 0px;
+}
+.topo nav a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color:purple;
+}
+.topo nav a:hover{
+    color: white;
+}
+.artigo{
+    margin: 40px;
+    color:whitesmoke;
+    font-family: 'Tahoma';
+}
+.artigo h1{
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 22px;
+}
+.artigo h2{
+    font-size: 17px;
+}
+.artigo p{
+    padding: 0;
+    width: 100%;
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.5;
+    text-indent: 0;
+}
+.artigo img{
+    margin: 10px;
+    display: block;
+    width: 20%;
+    border-image: white;
+    border: 2px solid white;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    background-color: rgba(255, 255, 255, 0.1);
+    float: right;
+}
+.elemento{
+    float: none;
+}
+.compatibilidade ul{
+    padding: 0;
+    margin-left: 20px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+.rodape{
+    font-size: 13px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: 2px 2px 1px black;
+    margin-top: 20px; 
+}
+.rodape a{
+    color: purple;
+    padding: 5px;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+.rodape a:hover{
+    color: white;
+}
+.rodape a:visited{
+    color: none;
+}
