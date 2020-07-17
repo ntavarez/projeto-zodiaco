@@ -1,9 +1,11 @@
 <?php
 
+session_start();
+
 include_once("conexao.php");
 
 $_stmt = $_conexao->prepare("SELECT nome,signo FROM dados_cadastrados WHERE login = ? AND senha = ?");
-$_stmt->bind_param("ss", $_login, $_senha);
+$_stmt->bind_param("ss", $_SESSION['login'], $_SESSION['senha']);
     
 if($_stmt->execute()){
     $_res = $_stmt->get_result();
@@ -15,28 +17,16 @@ if($_stmt->execute()){
         $_SESSION['nome'] = $_rows["nome"];
         
         if($_SESSION['signo'] == "Áries"){
-            $_SESSION['texto'] = "./txt/signos/aries/definicao-aries.txt";
             $_SESSION['img'] = "./img/bg/constelacao-aries.jpg";
             $_SESSION['simbolo'] = "./img/icones/aries-simbolo.png";
-            $_SESSION['elemento'] = "./txt/elementos/fogo-elemento.txt";
-            $_SESSION['mod'] = "./txt/modalidade/mod-cardinal.txt";
-            $_SESSION['comp'] = "./txt/signos/aries/compat-aries.txt";
         }       
         else if($_rows["signo"] == "Touro") {
-            $_SESSION['texto'] = "./txt/signos/touro/definicao-touro.txt";
             $_SESSION['img'] = "./img/bg/constelacao-touro.jpg";
             $_SESSION['simbolo'] = "./img/icones/touro-simbolo.png";
-            $_SESSION['elemento'] = "./txt/elementos/terra-elemento.txt";
-            $_SESSION['mod'] = "./txt/modalidade/mod-fixo.txt";
-            $_SESSION['comp'] = "./txt/signos/touro/compat-touro.txt";
         }
         else if($_rows["signo"] == "Gêmeos") {
-            $_SESSION['texto'] = "./txt/signos/gemeos/definicao-gemeos.txt";
             $_SESSION['img'] = "./img/bg/constelacao-gemeos.jpg";
             $_SESSION['simbolo'] = "./img/icones/gemeos-simbolo.png";
-            $_SESSION['elemento'] = "./txt/elementos/ar-elemento.txt";
-            $_SESSION['mod'] = "./txt/modalidade/mod-mutavel.txt";
-            $_SESSION['comp'] = "./txt/signos/gemeos/compat-gemeos.txt";
         }
         else if($_rows["signo"] == "Câncer") {
             $_SESSION['texto'] = "./txt/signos/cancer/definicao-cancer.txt";
@@ -87,12 +77,12 @@ if($_stmt->execute()){
             $_SESSION['comp'] = "./txt/signos/sagitario/compat-sagitario.txt";
         } 
         else if($_rows["signo"] == "Capricórnio") {
-            $_SESSION['texto'] = "./txt/signos/capricornio/definicao-capricornio.txt";
             $_SESSION['img'] = "./img/bg/constelacao-capricornio.jpg";
             $_SESSION['simbolo'] = "./img/icones/capricornio-simbolo.png";
-            $_SESSION['elemento'] = "./txt/elementos/terra-elemento.txt";
-            $_SESSION['mod'] = "./txt/modalidade/mod-cardinal.txt";
-            $_SESSION['comp'] = "./txt/signos/capricornio/compat-capricornio.txt";
+            include_once("verificar-signo.php");
+            include_once("verificar-elemento.php");
+            include_once("verificar-modalidade.php");
+            include_once("verificar-compatibilidade");
         }
         else if($_rows["signo"] == "Aquário") {
             $_SESSION['texto'] = "./txt/signos/aquario/definicao-aquario.txt";
@@ -115,4 +105,8 @@ if($_stmt->execute()){
 }else{
     echo "<script>alert('Não foi possível executar a query!')</script>";
 }
+
+$_stmt->close();
+$_conexao->close();
+
 ?>
