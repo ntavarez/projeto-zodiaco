@@ -65,7 +65,7 @@
               session_destroy();
             }
         }else{
-          echo "<script>alert('Não foi possível executar a query!');window.location.href='login.php'</script>";
+          echo "Error: " . mysqli_error($_conexao);
         }
         $_stmt->close();
       }

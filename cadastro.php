@@ -83,11 +83,12 @@
 
   session_start();
 
-  if (!$_conexao) {
-    die("Não foi possível conectar: " . mysqli_connect_error());
-  }
-
   if(isset($_POST["enviar"])){
+    if(!isset($_POST["nome"]) && !isset($_POST["sobrenome"]) && !isset($_POST["data_nasc"]) && !isset($_POST["data_nasc"])
+    && !isset($_POST["signo"]) && !isset($_POST["genero"]) && !isset($_POST["login"]) && !isset($_POST["senha"])){
+      echo "<script>alert('Dados inválidos, favor preencher os campos!');window.location.href='login.php'</script>";
+      die();
+    }
     $_SESSION['nome'] = $_POST["nome"];
     $_sobrenome = $_POST["sobrenome"];
     $_datai = $_POST["data_nasc"];
@@ -116,7 +117,7 @@
         echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='inicio.php'</script>";
         include_once("direcionar.php");
       }else{
-        echo "<scrip>alert('Ops! Não foi possível cadastrar seu usuário!');window.location.href='cadastro.php'</script>";
+        echo "<scrip>alert('Não foi possível cadastrar seu usuário!');window.location.href='cadastro.php'</script>";
       }
     }
   }else{
