@@ -28,13 +28,7 @@
             <header class="topo">
                 <nav>
                     <ul>
-                        <li><a class="logout" href="login.php">Logout</a>
-                        <?php 
-                        // Inicia sessões, para assim poder destruí-las
-                        //session_start(); 
-                        //session_destroy(); 
-                        //header("Location: login.html"); 
-                        ?>
+                        <li><a class="logout" href="login.php" >Logout</a>
                         </li>
                     </ul>
                 </nav>

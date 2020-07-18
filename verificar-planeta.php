@@ -23,6 +23,4 @@ if($_SESSION['signo'] == 'Áries' || $_SESSION['signo'] == 'Escorpião'){
     include_once("./txt/planetas/saturno.txt");
 }
 
-$_stmt->close();
-
 ?>
