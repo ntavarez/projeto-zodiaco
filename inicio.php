@@ -28,7 +28,7 @@
             <header class="topo">
                 <nav>
                     <ul>
-                        <li><a class="logout" href="login.php" >Logout</a>
+                        <li><a class="logout" href="login.php">Logout</a>
                         </li>
                     </ul>
                 </nav>
