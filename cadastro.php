@@ -27,7 +27,7 @@
         
       <div class="campo">
           <label for="nome">nome:</label>
-          <input type="text" id="nome" name="nome" data-ls-module="charCounter" maxlength="25" placeholder="digite seu nome*" required>
+          <input type="text" id="nome" name="nome" data-ls-module="charCounter" maxlength="45" placeholder="digite seu nome*" required>
       </div>
 
       <div class="campo">
@@ -68,6 +68,8 @@
     </form>
   </div>  
 
+  <!--Script de preenchimento de campo automático do signo de acordo com a data de nascimento-->
+
   <script type=text/javascript>
     $(document).ready(function(){
       $("input[name='data_nasc']").blur(function(){
@@ -86,11 +88,11 @@
   session_start();
 
   if(isset($_POST["enviar"])){
-    if(!isset($_POST["nome"]) && !isset($_POST["sobrenome"]) && !isset($_POST["data_nasc"]) && !isset($_POST["data_nasc"])
-    && !isset($_POST["signo"]) && !isset($_POST["genero"]) && !isset($_POST["login"]) && !isset($_POST["senha"])){
-      echo "<script>alert('Dados inválidos, favor preencher os campos!');window.location.href='login.php'</script>";
-      die();
-    }
+    //if(!isset($_POST["nome"]) && !isset($_POST["sobrenome"]) && !isset($_POST["data_nasc"]) && !isset($_POST["data_nasc"])
+    //&& !isset($_POST["signo"]) && !isset($_POST["genero"]) && !isset($_POST["login"]) && !isset($_POST["senha"])){
+    //  echo "<script>alert('Dados inválidos, favor preencher os campos!');window.location.href='login.php'</script>";
+    //  die();
+    //}
     $_SESSION['nome'] = $_POST["nome"];
     $_sobrenome = $_POST["sobrenome"];
     $_datai = $_POST["data_nasc"];
