@@ -81,7 +81,7 @@
                 <div class="compatibilidade">
                     <h2>Compatibilidade</h2>
                     <p id="paragrafo5">
-                        <ul class="compat">
+                        <ul>
                             <?php
                                 include_once("verificar-compatibilidade.php");
                             ?>
