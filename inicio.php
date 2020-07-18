@@ -71,7 +71,7 @@
                     echo "<img id='planeta' src=" . $_SESSION['planeta'] . ">";
                 ?>
                 <div class="planeta">
-                    <h2>Planeta regente</h2>
+                    <h2>Regente</h2>
                     <p id="paragrafo4">
                         <?php
                             include_once("verificar-planeta.php");
@@ -93,8 +93,8 @@
     </body>
 
     <footer class="rodape">
-        <p>Background images by<a href="https://pixabay.com/pt/users/Gam-Ol-2829280/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Oleg Gamulinskiy</a>from<a href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Pixabay</a></p>
-        <p>Astrology icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+        <p class="foot">Background images by<a href="https://pixabay.com/pt/users/Gam-Ol-2829280/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Oleg Gamulinskiy</a>from<a href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Pixabay</a></p>
+        <p class="foot">Astrology icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
     </footer>
     
     <?php

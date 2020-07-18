@@ -7,15 +7,17 @@
 <html lang="pt-br">
 <head>
     <title>~Cantinho dos Signos~</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="https://github.com/ntavarez">
+    <meta name="keywords" content="astrologia, signos, misticismo">
 
+    <script type="text/javascript" src="jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="estilo.css">
-    <script type="text/javascript" src="jquery-3.5.1.js"></script>
     <script type="text/javascript" src="validando-senha.js"></script>
+
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <!-- Cadastro POST -->
@@ -103,12 +105,12 @@
   $_stmt = $_conexao->prepare("SELECT login FROM dados_cadastrados WHERE login = ?");
   $_stmt->bind_param("s", $_SESSION['login']);
 
-  if ($_stmt->execute()) {
+  if ($_stmt->execute()){
     $_res = $_stmt->get_result();
     $_selectRows = $_res->num_rows;
 
     if($_selectRows > 0){
-      echo "<script>alert('Usuário já existente!');window.location.href='cadastro.html'</script>";
+      echo "<script>alert('Usuário já existente!');window.location.href='cadastro.php'</script>";
     }else{
       $_stmt = $_conexao->prepare("INSERT INTO dados_cadastrados(nome, sobrenome, data_nascimento, signo, genero, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?)");
       $_stmt->bind_param("sssssss", $_SESSION['nome'], $_sobrenome, $_dataf, $_SESSION['signo'], $_genero, $_SESSION['login'], $_SESSION['senha']);

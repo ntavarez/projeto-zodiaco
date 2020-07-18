@@ -82,7 +82,7 @@ body{
 .rodape{
     font-size: 13px;
     text-align: center;
-    color: rgba(17, 14, 14, 0.3);
+    color: rgba(255, 255, 255, 0.1);
     text-shadow: 2px 2px 1px black;
     margin-top: 20px; 
 }
@@ -97,4 +97,7 @@ body{
 }
 .rodape a:visited{
     color: none;
+}
+.foot{
+    margin-bottom: 5px;
 }
