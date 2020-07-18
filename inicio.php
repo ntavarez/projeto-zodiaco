@@ -81,9 +81,11 @@
                 <div class="compatibilidade">
                     <h2>Compatibilidade</h2>
                     <p id="paragrafo5">
-                        <?php
-                            include_once("verificar-compatibilidade.php");
-                        ?>
+                        <ul class="compat">
+                            <?php
+                                include_once("verificar-compatibilidade.php");
+                            ?>
+                        </ul>
                     </p>
                 </div>
             </article>
