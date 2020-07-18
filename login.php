@@ -1,3 +1,6 @@
+<?php
+  include_once("conexao.php");
+?>
 <!DOCTYPE html>
 <!-- doctype informa ao agente de usuario a versão do html que deve ser renderizada-->
 
@@ -30,12 +33,11 @@
           </div>
 
           <input type="submit" name="entrar" value="Entrar">
-          <a class="btn" href="cadastro.html">Criar conta</a>            
+          <a class="btn" href="cadastro.php">Criar conta</a>            
         </form>
     </div>
     <?php
       session_start();
-      require_once("conexao.php");
      
       if(isset($_POST["entrar"])){
         // Verificando se os campos foram preenchidos
