@@ -29,8 +29,8 @@ if($_stmt->execute()){
             $_SESSION['simbolo'] = "./img/icones/gemeos-simbolo.png";
         }
         else if($_rows["signo"] == "Câncer") {
-            $_SESSION['img'] = "./img/constelacao-cancer.jpg";
-            $_SESSION['simbolo'] = "./img/cancer-simbolo.png";
+            $_SESSION['img'] = "./img/bg/constelacao-cancer.jpg";
+            $_SESSION['simbolo'] = "./img/icones/cancer-simbolo.png";
         }
         else if($_rows["signo"] == "Leão") {
             $_SESSION['img'] = "./img/bg/constelacao-leao.jpg";
