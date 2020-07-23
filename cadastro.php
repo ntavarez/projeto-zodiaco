@@ -8,7 +8,7 @@
 <head>
     <title>~Cantinho dos Signos~</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <meta name="author" content="https://github.com/ntavarez">
     <meta name="keywords" content="astrologia, signos, misticismo">
 
@@ -21,52 +21,59 @@
 </head>
 <body>
     <!-- Cadastro POST -->
-  <div class="cadastro">
-    <form class="formulario" id="form2" method="post">
-      <p>Dados para cadastro</p>
-        
-      <div class="campo">
-          <label for="nome">nome:</label>
-          <input type="text" id="nome" name="nome" data-ls-module="charCounter" maxlength="25" placeholder="digite seu nome*" required>
-      </div>
+  <div class="flex-container">
+    <div class="row justify-content-md-center">
+      <div class="d-flex-md-4">
+        <div class="cadastro">
+          <form class="formulario" id="form2" method="post">
+            <p>Dados para cadastro</p>
+            
+            <div class="campo">
+              <label for="nome">nome:</label>
+              <input type="text" id="nome" name="nome" data-ls-module="charCounter" maxlength="25" placeholder="digite seu nome*" required>
+            </div>
 
-      <div class="campo">
-          <label for="sobrenome">sobrenome:</label>
-          <input type="text" id="sobrenome" name="sobrenome" data-ls-module="charCounter" maxlength="60" placeholder="digite seu sobrenome*" required>
-      </div>
+            <div class="campo">
+              <label for="sobrenome">sobrenome:</label>
+              <input type="text" id="sobrenome" name="sobrenome" data-ls-module="charCounter" maxlength="60" placeholder="digite seu sobrenome*" required>
+            </div>
 
-      <div class="campo">
-          <label for="data">data de nascimento:</label>
-          <input type="date" name="data_nasc" required>
-      </div>
+            <div class="campo">
+              <label for="data">data de nascimento:</label>
+              <input type="date" name="data_nasc" required>
+            </div>
 
-      <div class="campo">
-          <label for="signo">signo:</label>
-          <input type="text" name="signo" data-ls-module="charCounter" maxlength="15">
-      </div>
+            <div class="campo">
+              <label for="signo">signo:</label>
+              <input type="text" name="signo" data-ls-module="charCounter" maxlength="15">
+            </div>
 
-      <div class="campo-radiobox">
-          <label for="genero">gênero:<br></label>
-          <input type="radio" name="genero" value="feminino">Feminino <br>
-          <input type="radio" name="genero" value="masculino">Masculino <br>
-          <input type="radio" name="genero" value="indefinido">Indefinido<br>
-      </div>
+            <div class="campo">
+              <label for="genero">gênero:<br></label>
+              <div class="form-check">
+                <input class="mr-2" type="radio" name="genero" value="feminino">Feminino <br>
+                <input class="mr-2" type="radio" name="genero" value="masculino">Masculino <br>
+                <input class="mr-2" type="radio" name="genero" value="indefinido">Indefinido<br>
+              </div>
+            </div>
 
-      <div class="campo">
-          <label for="login">login:</label>
-          <input type="text" name="login" data-ls-module="charCounter" maxlength="20" placeholder="escolha seu login*" required>
-      </div>
+            <div class="campo">
+              <label for="login">login:</label>
+              <input type="text" name="login" data-ls-module="charCounter" maxlength="20" placeholder="escolha seu login*" required>
+            </div>
 
-      <div class="campo">
-          <label for="senha">senha:</label>
-          <input type="password" name="senha" data-ls-module="charCounter" maxlength="25" placeholder="digite sua senha*" required>
-      </div>
+            <div class="campo">
+              <label for="senha">senha:</label>
+              <input type="password" name="senha" data-ls-module="charCounter" maxlength="25" placeholder="digite sua senha*" required>
+            </div>
 
-      <input type="submit" name="enviar" value="Enviar">
-      <a class="btn" href="login.php">Voltar</a>
-
-    </form>
-  </div>  
+            <input type="submit" name="enviar" value="Enviar">
+            <a class="btn" href="login.php">Voltar</a>
+          </form>
+        </div> 
+      </div> 
+    </div>
+  </div>
 
   <!--Script de preenchimento de campo automático do signo de acordo com a data de nascimento-->
 
@@ -93,7 +100,7 @@
       echo "<script>alert('Dados inválidos, favor preencher os campos!');window.location.href='login.php'</script>";
       die();
     }
-    
+
     $_SESSION['nome'] = $_POST["nome"];
     $_sobrenome = $_POST["sobrenome"];
     $_datai = $_POST["data_nasc"];
@@ -113,7 +120,7 @@
     $_selectRows = $_res->num_rows;
 
     if($_selectRows > 0){
-      echo "<script>alert('Usuário já existente!');window.location.href='cadastro.php'</script>";
+      echo "<script>alert('Usuário já existente!')</script>";
     }else{
       $_stmt = $_conexao->prepare("INSERT INTO dados_cadastrados(nome, sobrenome, data_nascimento, signo, genero, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?)");
       $_stmt->bind_param("sssssss", $_SESSION['nome'], $_sobrenome, $_dataf, $_SESSION['signo'], $_genero, $_SESSION['login'], $_SESSION['senha']);
@@ -130,13 +137,9 @@
   }
 
   $_stmt->close();
+  $_conexao->close();
 
   ?>
+
 </body>
-
-<footer><p>Por <a href="https://github.com/ntavarez">Natália Tavares</a></p></footer>
-
-<?php
-  $_conexao->close();
-?>
 </html>
