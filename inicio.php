@@ -30,7 +30,10 @@
             <header class="topo">
                 <nav>
                     <ul>
-                        <li><a class="logout" href="login.php">Logout</a>
+                        <li>
+                        <form action="logout.php" method="post" id="form-logout">
+                            <a href="login.php" onClick="document.getElementById('form-logout').submit();">Logout</a>
+                        </form>
                         </li>
                     </ul>
                 </nav>
