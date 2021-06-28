@@ -1,9 +1,9 @@
 <?php
     session_start();
     require_once("conexao.php");
+    include("validações.php");
 ?>
 <!DOCTYPE html>
-<!-- doctype informa ao agente de usuario a versão do html que deve ser renderizada-->
 
 <html lang="pt-br">
     <head>
@@ -49,7 +49,7 @@
                 <div class="definicao">
                     <p id="paragrafo1">
                         <?php
-                            include_once("verificar-signo.php");
+                            getDefinicaoSigno($_SESSION['signo'], $_pdo);
                         ?>
                     </p>
                 </div>
@@ -60,7 +60,7 @@
                     <h2>Elemento</h2>
                     <p id="paragrafo2">
                         <?php
-                           include_once("verificar-elemento.php"); 
+                           getElemento($_SESSION['signo'], $_pdo);
                         ?>
                     </p>
                 </div>
@@ -68,18 +68,19 @@
                     <h2>Modalidade</h2>
                     <p id="paragrafo3">
                         <?php
-                            include_once("verificar-modalidade.php");
+                            getModalidade($_SESSION['signo'], $_pdo);
                         ?>
                     </p>
                 </div>
                 <?php
-                    echo "<img id='planeta' src=" . $_SESSION['planeta'] . ">";
+                    getPlaneta($_SESSION['signo'], $_pdo);
+                    echo "<img id='planeta' src=" . $_SESSION['planeta-img'] . ">";
                 ?>
                 <div class="planeta">
                     <h2>Regente</h2>
                     <p id="paragrafo4">
                         <?php
-                            include_once("verificar-planeta.php");
+                            getDefinicaoPlaneta($_SESSION['signo'], $_pdo);
                         ?>
                     </p>
                 </div>
@@ -88,7 +89,7 @@
                     <p id="paragrafo5">
                         <ul>
                             <?php
-                                include_once("verificar-compatibilidade.php");
+                                getCompatibilidade($_SESSION['signo'], $_pdo);
                             ?>
                         </ul>
                     </p>
@@ -101,8 +102,4 @@
         <p class="foot">Background images by<a href="https://pixabay.com/pt/users/Gam-Ol-2829280/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Oleg Gamulinskiy</a>from<a href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3820093">Pixabay</a></p>
         <p class="foot">Astrology icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
     </footer>
-    
-    <?php
-        $_conexao->close();
-    ?>
 </html>
