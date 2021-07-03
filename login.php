@@ -1,5 +1,6 @@
 <?php
 include_once("conexao.php");
+include_once("validações.php");
 ?>
 <!DOCTYPE html>
 
@@ -47,7 +48,6 @@ include_once("conexao.php");
   </div>
 
   <?php
-  session_start();
 
   if (isset($_POST["entrar"])) {
     // Verificando se os campos foram preenchidos
@@ -62,10 +62,10 @@ include_once("conexao.php");
 
         // Verificando login existente no BD
         if ($_rows && count($_rows) > 0) {
+          session_start();
           $_dadosUsuario = implode(',', $_rows);
           list($_nome, $_signoId) = explode(",", $_dadosUsuario);
 
-          include_once("validações.php");
           getSigno($_signoId, $_pdo);
           
           $_SESSION['nome'] = $_nome;

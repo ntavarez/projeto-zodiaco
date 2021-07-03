@@ -1,5 +1,6 @@
 <?php
 include_once("conexao.php");
+include_once("validações.php");
 ?>
 <!DOCTYPE html>
 <!-- doctype informa ao agente de usuario a versão do html que deve ser renderizada-->
@@ -57,8 +58,8 @@ include_once("conexao.php");
             <div class="campo">
               <label for="genero">gênero:<br></label>
               <div class="form-check">
-                <input class="mr-2" type="radio" name="genero" value="feminino">Feminino <br>
-                <input class="mr-2" type="radio" name="genero" value="masculino">Masculino <br>
+                <input class="mr-2" type="radio" name="genero" value="feminino">Feminino<br>
+                <input class="mr-2" type="radio" name="genero" value="masculino">Masculino<br>
                 <input class="mr-2" type="radio" name="genero" value="indefinido">Indefinido<br>
               </div>
             </div>
@@ -102,44 +103,43 @@ include_once("conexao.php");
 
   if (isset($_POST["nome"]) && isset($_POST["sobrenome"]) && isset($_POST["data_nasc"]) && isset($_POST["signo"]) 
   && isset($_POST["signo_id"]) && isset($_POST["genero"]) && isset($_POST["login"]) && isset($_POST["senha"])) {
-    $_SESSION['nome'] = $_POST["nome"];
-    $_sobrenome = $_POST["sobrenome"];
-    $_data = $_POST["data_nasc"];
-    $_SESSION['signo'] = $_POST["signo"];
-    $_SESSION['signo_id'] = $_POST["signo_id"];
-    $_genero = $_POST["genero"];
-    $_SESSION['login'] = $_POST["login"];
-    $_SESSION['senha'] = $_POST["senha"];
 
-    $_stmt = $_pdo->prepare("SELECT login FROM usuarios WHERE :login");
-    $_stmt->bindParam(":login", $_SESSION['login']);
+    $_stmt = $_pdo->prepare("SELECT login FROM usuarios WHERE login = :login");
+    $_stmt->bindParam(":login", $_POST['login']);
 
     if ($_stmt->execute()) {
-      $_rows_1 = $_stmt->fetchAll(PDO::FETCH_ASSOC);
+      $_rows_1 = $_stmt->fetch(PDO::FETCH_ASSOC);
 
-      if (count($_rows_1) > 0) {
+      if ($_rows_1 && count($_rows_1) > 0) {
         echo "<script>alert('Usuário já existente!')</script>";
       }
       else 
       {
         $_stmt = $_pdo->prepare("INSERT INTO usuarios(nome, sobrenome, data_nasc, signo_id, genero, login, senha) 
                  VALUES (:nome, :sobrenome, :data_nasc, :signo_id, :genero, :login, :senha)");
-        $_stmt->bindParam(":nome", $_SESSION['nome']);
-        $_stmt->bindParam(":sobrenome", $_sobrenome);
-        $_stmt->bindParam(":data_nasc", $_data);
-        $_stmt->bindParam(":signo_id", $_SESSION['signo_id']);
-        $_stmt->bindParam(":genero", $_genero);
-        $_stmt->bindParam(":login", $_SESSION['login']);
-        $_stmt->bindParam(":senha", $_SESSION['senha']);
+        $_stmt->bindParam(":nome", $_POST["nome"]);
+        $_stmt->bindParam(":sobrenome", $_POST["sobrenome"]);
+        $_stmt->bindParam(":data_nasc", $_POST["data_nasc"]);
+        $_stmt->bindParam(":signo_id", $_POST["signo_id"]);
+        $_stmt->bindParam(":genero", $_POST["genero"]);
+        $_stmt->bindParam(":login", $_POST["login"]);
+        $_stmt->bindParam(":senha", $_POST["senha"]);
 
         if ($_stmt->execute()) {
           $_rows_2 = $_stmt->fetch(PDO::FETCH_ASSOC);
 
+          $_SESSION['nome'] = $_POST["nome"];
+          $_SESSION['signo_id'] = $_POST["signo_id"];
+
+          getSigno($_SESSION['signo_id'], $_pdo);
+
+          $_SESSION['img'] = "./img/bg/Constelacao-{$_SESSION['signo']}.jpg";
+          $_SESSION['simbolo'] = "./img/icones/{$_SESSION['signo']}-simbolo.png";
+
           echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='inicio.php'</script>";
-          include_once("direcionar.php");
-        } 
-        else {
-            echo "Não foi possível cadastrar os dados!";
+        }
+        else{
+          echo "Não foi executar a query de cadastro!";
         }
       }
     } 
@@ -150,6 +150,6 @@ include_once("conexao.php");
 
   $_stmt = null;
   ?>
-
+  
 </body>
 </html>

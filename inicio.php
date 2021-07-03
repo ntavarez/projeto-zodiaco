@@ -31,8 +31,8 @@
                 <nav>
                     <ul>
                         <li>
-                        <form action="logout.php" method="post" id="form-logout">
-                            <a href="login.php" onClick="document.getElementById('form-logout').submit();">Logout</a>
+                        <form action="logout.php" method="post" id="logout">
+                            <input type="submit" name="sair" value="Logout">
                         </form>
                         </li>
                     </ul>
