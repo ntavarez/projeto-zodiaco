@@ -1,6 +1,6 @@
 <?php
 include_once("conexao.php");
-include_once("validações.php");
+//include_once("validações.php");
 ?>
 <!DOCTYPE html>
 <!-- doctype informa ao agente de usuario a versão do html que deve ser renderizada-->
@@ -104,6 +104,12 @@ include_once("validações.php");
   if (isset($_POST["nome"]) && isset($_POST["sobrenome"]) && isset($_POST["data_nasc"]) && isset($_POST["signo"]) 
   && isset($_POST["signo_id"]) && isset($_POST["genero"]) && isset($_POST["login"]) && isset($_POST["senha"])) {
 
+    /* 
+    Buscando no BD se usuário já existe
+    Caso sim: não cadastrar
+    Caso não: efetuar cadastro e redirecionar pra página inicial
+    */
+    
     $_stmt = $_pdo->prepare("SELECT login FROM usuarios WHERE login = :login");
     $_stmt->bindParam(":login", $_POST['login']);
 
@@ -126,17 +132,17 @@ include_once("validações.php");
         $_stmt->bindParam(":senha", $_POST["senha"]);
 
         if ($_stmt->execute()) {
-          $_rows_2 = $_stmt->fetch(PDO::FETCH_ASSOC);
+          //$_rows_2 = $_stmt->fetch(PDO::FETCH_ASSOC);
 
-          $_SESSION['nome'] = $_POST["nome"];
-          $_SESSION['signo_id'] = $_POST["signo_id"];
+          //$_SESSION['nome'] = $_POST["nome"];
+          //$_SESSION['signo_id'] = $_POST["signo_id"];
 
-          getSigno($_SESSION['signo_id'], $_pdo);
+          //getSigno($_SESSION['signo_id'], $_pdo);
 
-          $_SESSION['img'] = "./img/bg/Constelacao-{$_SESSION['signo']}.jpg";
-          $_SESSION['simbolo'] = "./img/icones/{$_SESSION['signo']}-simbolo.png";
+          //$_SESSION['img'] = "./img/bg/Constelacao-{$_SESSION['signo']}.jpg";
+          //$_SESSION['simbolo'] = "./img/icones/{$_SESSION['signo']}-simbolo.png";
 
-          echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='inicio.php'</script>";
+          echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='login.php'</script>";
         }
         else{
           echo "Não foi executar a query de cadastro!";

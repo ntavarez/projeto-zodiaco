@@ -48,21 +48,25 @@ include_once("validações.php");
   </div>
 
   <?php
+  session_start();
 
+  /* Verificando se os campos login e senha foram preenchidos */
   if (isset($_POST["entrar"])) {
-    // Verificando se os campos foram preenchidos
     if (isset($_POST["login"]) && isset($_POST["senha"])) {
-      $_SESSION['login'] = $_POST["login"];
+
+      /* 
+        Verificando login existente no BD
+        Caso sim: login efetuado
+        Caso não: informar que dados são inválidos
+      */
 
       $_stmt = $_pdo->prepare("SELECT nome, signo_id FROM usuarios WHERE login = :login");
-      $_stmt->bindParam(":login", $_SESSION['login']);
+      $_stmt->bindParam(":login", $_POST['login']);
 
       if ($_stmt->execute()) {
         $_rows = $_stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verificando login existente no BD
         if ($_rows && count($_rows) > 0) {
-          session_start();
           $_dadosUsuario = implode(',', $_rows);
           list($_nome, $_signoId) = explode(",", $_dadosUsuario);
 
